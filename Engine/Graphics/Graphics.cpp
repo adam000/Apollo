@@ -404,10 +404,8 @@ void DrawSprite ( const std::string& sheetname, int sheet_x, int sheet_y, vec2 p
 	}
 	Matrices::SetViewMatrix(matrix2x3::Translate(position));
 	Matrices::SetModelMatrix(matrix2x3::Identity());
-	if (sheet->IsRotational())
-	{
-		assert(sheet_x == 0);
-		assert(sheet_y == 0);
+    if (sheet_x == 0 && sheet_y == 0)
+    {
 		sheet->DrawRotation(size, rotation);
 	}
 	else
