@@ -15,6 +15,7 @@ int main ( int argc, char** argv )
     srand(time(NULL));
     _automatic_terminator at;
 	SDL_Init(SDL_INIT_TIMER);
+/* [TEMP] [ALISTAIR] with 4.1, apparently an argv is thrown in, causing the assertion below to fail
 #ifndef NDEBUG
     if (argc > 1)
     {
@@ -46,7 +47,7 @@ int main ( int argc, char** argv )
 #endif
     else
     {
-        MainLoop();
-    }
+[TEMP]*/        MainLoop();
+    // [TEMP]    }
     return 0;
 }

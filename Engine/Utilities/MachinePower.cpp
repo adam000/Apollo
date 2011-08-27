@@ -40,6 +40,7 @@ void CheckMachinePowerSanity()
 	MachinePower power = GetMachinePower();
 	if (power == MACHINE_POWER_WIMPY)
 	{
+#ifdef NDEBUG
 		long result = NSRunAlertPanel(CFSTR("Underpowered Machine"),
 		                              CFSTR("Your machine does not have enough power to run the Apollo engine properly. If you choose to continue, you may experience performance difficulties."),
 									  CFSTR("Quit"),
@@ -47,6 +48,7 @@ void CheckMachinePowerSanity()
 									  0);
 		if (result != 0)
 			exit(0);
+#endif
 	}
 }
 
