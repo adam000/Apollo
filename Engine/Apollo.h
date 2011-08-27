@@ -2,7 +2,6 @@
 #define __apollo_h
 
 #ifdef WIN32
-#define assert(x) { if (! ( x ) ) { printf("Assertion failure: %s\n\tFile: %s\n\tLine: %d\n", # x , __FILE__, __LINE__ ); abort(); } }
 #undef SendMessage
 #undef GetMessage	//apparently, these are Windows directives
 #endif
@@ -25,6 +24,10 @@
 #include "Sound/Sound.h"
 #include "Preferences.h"
 #include "enetadapt.h"
+
+#ifndef assert
+#define assert(x) { if (! ( x ) ) { printf("Assertion failure: %s\n\tFile: %s\n\tLine: %d\n", # x , __FILE__, __LINE__ ); abort(); } }
+#endif
 
 extern "C"
 {
