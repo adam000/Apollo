@@ -15,3 +15,4 @@ fractalmonster.lua
 nano.save
 *.swp
 Resources/Config/Preferences.cfg
+*.xcuserdatad
