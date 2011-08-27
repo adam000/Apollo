@@ -73,18 +73,7 @@ SpriteSheet::SpriteSheet ( const std::string& name )
 		assert(root);
 		TiXmlElement* dimensions = root->FirstChild("dimensions")->ToElement();
 		assert(dimensions);
-		TiXmlElement* scale = root->FirstChild("scale")->ToElement();
 		int rc;
-		if (scale)
-		{
-			rc = scale->QueryFloatAttribute("factor", &scaleFactor);
-			if (rc != TIXML_SUCCESS)
-				scaleFactor = 1.0f;
-		}
-		else
-		{
-			scaleFactor = 1.0f;
-		}
 		rc = dimensions->QueryIntAttribute("x", &sheetTilesX);
 		assert(rc == TIXML_SUCCESS);
 		rc = dimensions->QueryIntAttribute("y", &sheetTilesY);
@@ -93,10 +82,6 @@ SpriteSheet::SpriteSheet ( const std::string& name )
 		assert(sheetTilesY > 0);
 		tileSizeX = surface->w / sheetTilesX;
 		tileSizeY = surface->h / sheetTilesY;
-		if (root->FirstChild("rotational"))
-			rotational = true;
-		else
-			rotational = false;
 		delete xmlDoc;
 	}
 	else
@@ -104,10 +89,8 @@ SpriteSheet::SpriteSheet ( const std::string& name )
 		// assume it's just one sprite
 		sheetTilesX = 1;
 		sheetTilesY = 1;
-		rotational = false;
 		tileSizeX = surface->w;
 		tileSizeY = surface->h;
-		scaleFactor = 1.0f;
 	}
 }
 
@@ -125,13 +108,9 @@ void SpriteSheet::Draw ( int x, int y, const vec2& size )
 		glBindTexture(GL_TEXTURE_RECTANGLE_ARB, texID);
 	else
 		MakeResident();
-	if (scaleFactor <= 0)
-	{
-		printf("Trouble with scaleFactor value.");
-		abort();
-	}
-	float vx = halfSize.X() * scaleFactor, vy = halfSize.Y() * scaleFactor;
-	GLfloat vertices[] = { -vx, -vy, vx, -vy, vx, vy, -vx, vy };
+
+    float vx = halfSize.X(), vy = halfSize.Y();
+    GLfloat vertices[] = { -vx, -vy, vx, -vy, vx, vy, -vx, vy };
 	float texBLX, texBLY, texWidth = tileSizeX, texHeight = tileSizeY;
 	texBLX = (tileSizeX * x);
 	texBLY = (tileSizeY * y);
