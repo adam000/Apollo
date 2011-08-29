@@ -1788,6 +1788,7 @@ int import ( lua_State* L )
 {
 	const char* modulename = luaL_checkstring(L, 1);
 	LuaScript::RawImport(L, modulename);
+    // [TODO] this should return an error if this fails? Right now it just crashes! Not good behavior >_<
 	return 0;
 }
 
