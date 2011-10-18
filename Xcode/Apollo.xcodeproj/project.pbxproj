@@ -937,7 +937,6 @@
 					../External/SDL.framework/Headers,
 				);
 				INSTALL_PATH = /usr/local/lib;
-				LLVM_LTO = NO;
 				PRODUCT_NAME = Apollo;
 			};
 			name = Debug;
@@ -964,7 +963,6 @@
 					../External/SDL.framework/Headers,
 				);
 				INSTALL_PATH = /usr/local/lib;
-				LLVM_LTO = YES;
 				PRODUCT_NAME = Apollo;
 				ZERO_LINK = NO;
 			};
@@ -1005,7 +1003,6 @@
 					../External/SDL.framework/Headers,
 				);
 				INSTALL_PATH = /usr/local/lib;
-				LLVM_LTO = NO;
 				PRODUCT_NAME = Apollo;
 			};
 			name = "Debug (quiet)";
