@@ -181,7 +181,7 @@ void SetMusicVolume(float mvol)
 
 float SoundVolume()
 {
-	return 1.0f;
+	return 0.5f; // [HARDCODED] [PLZFIX]
 }
 
 void SetSoundVolume(float mvol)

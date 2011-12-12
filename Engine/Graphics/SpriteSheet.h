@@ -23,15 +23,15 @@ private:
 	GLuint texID;
 	int sheetTilesX, sheetTilesY;
 	int tileSizeX, tileSizeY;
-	bool rotational;
+//	bool rotational;
 	void MakeResident ();
 public:
-	float scaleFactor;
+//	float scaleFactor;
 	SpriteSheet ( const std::string& name );
 	~SpriteSheet ();
 	
-	bool IsRotational () const { return rotational; }
-	float ScaleFactor () const { return scaleFactor; }
+//	bool IsRotational () const { return rotational; }
+//	float ScaleFactor () const { return scaleFactor; }
 	
 	int SheetTilesX () const { return sheetTilesX; }
 	int SheetTilesY () const { return sheetTilesY; }

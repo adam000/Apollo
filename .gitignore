@@ -16,3 +16,4 @@ nano.save
 *.swp
 Resources/Config/Preferences.cfg
 *.xcuserdatad
+Output/*
