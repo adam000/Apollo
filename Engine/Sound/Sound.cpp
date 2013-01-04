@@ -52,6 +52,14 @@ static ALuint GetSound(const std::string& name)
 	ALuint buf = alureCreateBufferFromMemory(data, length);
 	free(data);
 	sounds.insert(std::make_pair(name, buf));
+#ifndef NDEBUG
+    const ALchar* err = alureGetErrorString();
+    if (strcmp(err, "No error"))
+    {
+        LOG("Sound", LOG_ERROR, "GetSound: %s", err);
+        exit(1);
+    }
+#endif
 	return buf;
 }
 
@@ -65,16 +73,31 @@ void Init(int frequency, int resolution, int sources)
 		ALC_STEREO_SOURCES, 1,*/
 		0
 	};
-	alureInitDevice(NULL, attribs);
+	if (AL_FALSE == alureInitDevice(NULL, attribs)) {
+        LOG("Sound", LOG_ERROR, "ALURE init failure");
+        exit(1);
+    }
+    
 	soundSources = new ALuint[sources];
 	alGenSources(sources, soundSources);
 	alGenSources(1, &musicSource);
-	//alGenBuffers(2, musicBufs);
+	alGenBuffers(2, musicBufs);
 	soundSourceCount = sources;
 	alDistanceModel(AL_INVERSE_DISTANCE_CLAMPED);
 	alSpeedOfSound(1400.0);
 	alDopplerFactor(0.7);
 	alureUpdateInterval(0.03333f);
+    
+#ifndef NDEBUG
+    if (alGetError())
+        LOG("Sound", LOG_ERROR, "OpenAL init failure");
+    const ALchar* err = alureGetErrorString();
+    if (strcmp(err, "No error"))
+    {
+        LOG("Sound", LOG_ERROR, "ALURE init failure: %s", err);
+        exit(1);
+    }
+#endif
 }
 
 static ALuint GetFreeSource()
@@ -95,12 +118,23 @@ void PlaySound(const std::string& name, float gain)
 	ALuint buf    = GetSound(name);
 	ALuint source = GetFreeSource();
 	LOG("Sound", LOG_NOTICE, "playing sound %s on channel %d", name.c_str(), source);
+    const ALchar* err = alureGetErrorString();
 	alSourcei(source, AL_BUFFER, buf);
 	alSourcei(source, AL_SOURCE_RELATIVE, AL_TRUE);
 	alSourcef(source, AL_GAIN, gain);
 	alSourcefv(source, AL_POSITION, fz);
 	alSourcefv(source, AL_VELOCITY, fz);
 	alSourcePlay(source);
+#ifndef NDEBUG
+    if (alGetError())
+        LOG("Sound", LOG_ERROR, "OpenAL error");
+    err = alureGetErrorString();
+    if (strcmp(err, "No error"))
+    {
+        LOG("Sound", LOG_ERROR, "ALURE error: %s", err);
+        exit(1);
+    }
+#endif
 }
 
 void PlaySoundPositional(const std::string& name, vec2 pos, vec2 vel, float gain)
@@ -116,6 +150,16 @@ void PlaySoundPositional(const std::string& name, vec2 pos, vec2 vel, float gain
 	alSourcef(source, AL_REFERENCE_DISTANCE, 50.0);
 	alSourcef(source, AL_GAIN, gain);
 	alSourcePlay(source);
+#ifndef NDEBUG
+    if (alGetError())
+        LOG("Sound", LOG_ERROR, "OpenAL error");
+    const ALchar* err = alureGetErrorString();
+    if (strcmp(err, "No error"))
+    {
+        LOG("Sound", LOG_ERROR, "ALURE error: %s", err);
+        exit(1);
+    }
+#endif
 }
 
 static ALfloat forientation[] = {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f};
@@ -153,6 +197,16 @@ void PlayMusic(const std::string& name)
 	LOG("Sound", LOG_MESSAGE, "Music: %s", name.c_str());
 	if (!data)
 		LOG("Sound", LOG_WARNING, "failed to find music");
+#ifndef NDEBUG
+    if (alGetError())
+        LOG("Sound", LOG_ERROR, "OpenAL error");
+    const ALchar* err = alureGetErrorString();
+    if (strcmp(err, "No error"))
+    {
+        LOG("Sound", LOG_ERROR, "ALURE error attempting to play song %s: %s", name.c_str(), err);
+        exit(1);
+    }
+#endif
 }
 
 void StopMusic()
