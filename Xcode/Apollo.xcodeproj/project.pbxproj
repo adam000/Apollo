@@ -921,22 +921,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					../External,
-					"\"$(SRCROOT)/../External\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../External/**";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				HEADER_SEARCH_PATHS = (
-					..,
-					../Engine,
-					../External,
-					../External/Lua,
-					../External/eNet,
-					../External/SDL.framework/Headers,
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../**";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Apollo;
 				SDKROOT = macosx10.7;
@@ -947,24 +937,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					../External,
-					"\"$(SRCROOT)/../External\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../External/**";
 				GCC_CHECK_RETURN_VALUE_OF_OPERATOR_NEW = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				HEADER_SEARCH_PATHS = (
-					..,
-					../Engine,
-					../External,
-					../External/Lua,
-					../External/eNet,
-					../External/SDL.framework/Headers,
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../**";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Apollo;
 				SDKROOT = macosx10.7;
@@ -990,23 +970,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					../External,
-					"\"$(SRCROOT)/../External\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../External/**";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				HEADER_SEARCH_PATHS = (
-					..,
-					../Engine,
-					../External,
-					../External/Lua,
-					../External/eNet,
-					../External/SDL.framework/Headers,
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../**";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Apollo;
 				SDKROOT = macosx10.7;
