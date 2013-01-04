@@ -165,6 +165,8 @@
 		57DFB0C911E3993700941E61 /* MachinePower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57DFB0C811E3993700941E61 /* MachinePower.cpp */; };
 		57FCA50B10ACDF9D002D6A9E /* Object3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FCA50910ACDF9D002D6A9E /* Object3D.cpp */; };
 		57FCA50C10ACDF9D002D6A9E /* Object3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 57FCA50A10ACDF9D002D6A9E /* Object3D.h */; };
+		7A318EC01696970F00D4A199 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A318EBE1696970F00D4A199 /* Ogg.framework */; };
+		7A318EC11696970F00D4A199 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A318EBF1696970F00D4A199 /* Vorbis.framework */; };
 		7A8B3CCF169683B200562224 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8B3CCB169683B200562224 /* SDL_image.framework */; };
 		7A8B3CD0169683B200562224 /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8B3CCC169683B200562224 /* SDL_mixer.framework */; };
 		7A8B3CD1169683B200562224 /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8B3CCD169683B200562224 /* SDL_ttf.framework */; };
@@ -332,6 +334,8 @@
 		57DFB0C811E3993700941E61 /* MachinePower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MachinePower.cpp; sourceTree = "<group>"; };
 		57FCA50910ACDF9D002D6A9E /* Object3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object3D.cpp; sourceTree = "<group>"; };
 		57FCA50A10ACDF9D002D6A9E /* Object3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object3D.h; sourceTree = "<group>"; };
+		7A318EBE1696970F00D4A199 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ogg.framework; path = ../External/Ogg.framework; sourceTree = "<group>"; };
+		7A318EBF1696970F00D4A199 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vorbis.framework; path = ../External/Vorbis.framework; sourceTree = "<group>"; };
 		7A5DD996126D7B860037B298 /* untitled */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = untitled; sourceTree = "<group>"; };
 		7A8B3CCB169683B200562224 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../External/SDL_image.framework; sourceTree = "<group>"; };
 		7A8B3CCC169683B200562224 /* SDL_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_mixer.framework; path = ../External/SDL_mixer.framework; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 				7A8B3CD0169683B200562224 /* SDL_mixer.framework in Frameworks */,
 				7A8B3CD1169683B200562224 /* SDL_ttf.framework in Frameworks */,
 				7A8B3CD2169683B200562224 /* SDL.framework in Frameworks */,
+				7A318EC01696970F00D4A199 /* Ogg.framework in Frameworks */,
+				7A318EC11696970F00D4A199 /* Vorbis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +370,8 @@
 				496A24030F0EB34000C53BA1 /* External */,
 				496A23DA0F0EB21700C53BA1 /* Source */,
 				496A23E10F0EB22F00C53BA1 /* Products */,
+				7A318EBE1696970F00D4A199 /* Ogg.framework */,
+				7A318EBF1696970F00D4A199 /* Vorbis.framework */,
 				7A8B3CCB169683B200562224 /* SDL_image.framework */,
 				7A8B3CCC169683B200562224 /* SDL_mixer.framework */,
 				7A8B3CCD169683B200562224 /* SDL_ttf.framework */,
@@ -921,7 +929,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../External/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../External/**",
+					"\"$(SRCROOT)/../External\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -937,7 +948,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../External/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../External/**",
+					"\"$(SRCROOT)/../External\"",
+				);
 				GCC_CHECK_RETURN_VALUE_OF_OPERATOR_NEW = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
@@ -970,7 +984,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../External/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../External/**",
+					"\"$(SRCROOT)/../External\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
