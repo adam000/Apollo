@@ -775,7 +775,7 @@
 		496A23C40F0EB1F700C53BA1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 496A23C70F0EB1F700C53BA1 /* Build configuration list for PBXProject "Apollo" */;
 			compatibilityVersion = "Xcode 3.2";
